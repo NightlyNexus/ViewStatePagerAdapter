@@ -3,12 +3,14 @@ ViewStatePagerAdapter
 
 Saves and restores View states in ViewPagers.
 
-[`ViewStatePagerAdapter`](https://github.com/NightlyNexus/ViewStatePagerAdapter/blob/master/viewstatepageradapter/src/main/java/com/nightlynexus/viewstatepageradapter/ViewStatePagerAdapter.java) is simply an implementation of `android.support.v4.view.PagerAdapter` and automatically saves and restores View states when returning to pages (previously removed Views in the ViewPager) and after ViewPager's state restoration.
+[`ViewStatePagerAdapter`](viewstatepageradapter/src/main/java/com/nightlynexus/viewstatepageradapter/ViewStatePagerAdapter.java) is simply an implementation of `android.support.v4.view.PagerAdapter` and automatically saves and restores View states when returning to pages (previously removed Views in the ViewPager) and after ViewPager's state restoration.
 `ViewStatePagerAdapter` is similar to `android.support.v4.app.FragmentStatePagerAdapter` but for use with just Views, rather than Fragments.
 
 ### Sample
 
 The sample application shows the difference between the use of a `ViewStatePagerAdapter` and a `ViewPagerAdapter` (with no saving and restoring of View state).
+
+![](images/sample.gif)
 
 Download
 --------
