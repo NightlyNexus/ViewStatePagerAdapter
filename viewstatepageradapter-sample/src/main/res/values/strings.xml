@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="label_application">ViewStatePagerAdapter Sample</string>
+  <string name="pager_with_state">With State</string>
+  <string name="pager_without_state">With<i>out</i> State</string>
+</resources>

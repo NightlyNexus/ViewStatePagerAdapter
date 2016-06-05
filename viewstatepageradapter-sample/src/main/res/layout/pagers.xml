@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="@dimen/pagers_margin_vertical"
+    android:layout_marginBottom="@dimen/pagers_margin_vertical"
+    android:orientation="vertical"
+    >
+
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center_horizontal"
+      android:gravity="center_horizontal"
+      android:text="@string/pager_with_state"
+      android:textSize="@dimen/pager_title_text_size"
+      />
+
+  <android.support.v4.view.ViewPager
+      android:id="@+id/with_state"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="1"
+      />
+
+  <android.support.v4.view.ViewPager
+      android:id="@+id/without_state"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="1"
+      />
+
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center_horizontal"
+      android:gravity="center_horizontal"
+      android:text="@string/pager_without_state"
+      android:textSize="@dimen/pager_title_text_size"
+      />
+</LinearLayout>
