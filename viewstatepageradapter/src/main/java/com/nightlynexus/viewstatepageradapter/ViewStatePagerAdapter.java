@@ -35,7 +35,6 @@ public abstract class ViewStatePagerAdapter extends PagerAdapter {
    */
   public ViewStatePagerAdapter(int capacity) {
     attached = new SparseArray<>(capacity);
-    detached = null;
   }
 
   protected abstract View createView(ViewGroup container, int position);
@@ -53,6 +52,9 @@ public abstract class ViewStatePagerAdapter extends PagerAdapter {
   }
 
   @Override public final void restoreState(Parcelable state, ClassLoader loader) {
+    if (!(state instanceof SavedState)) {
+      return;
+    }
     SavedState savedState = (SavedState) state;
     detached = savedState.detached;
   }
@@ -130,7 +132,7 @@ public abstract class ViewStatePagerAdapter extends PagerAdapter {
 
     static <T> SparseArray<T> readSparseArray(Parcel in, ClassLoader loader) {
       int size = in.readInt();
-      if (size < 0) {
+      if (size == -1) {
         return null;
       }
       SparseArray<T> sa = new SparseArray<>(size);
