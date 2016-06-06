@@ -18,7 +18,7 @@ Download
 Gradle:
 
 ```groovy
-compile 'com.nightlynexus.viewstatepageradapter:viewstatepageradapter:1.0.0'
+compile 'com.nightlynexus.viewstatepageradapter:viewstatepageradapter:1.0.1'
 ```
 
 License
