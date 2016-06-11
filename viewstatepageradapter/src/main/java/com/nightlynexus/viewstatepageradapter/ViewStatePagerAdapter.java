@@ -52,9 +52,6 @@ public abstract class ViewStatePagerAdapter extends PagerAdapter {
   }
 
   @Override public final void restoreState(Parcelable state, ClassLoader loader) {
-    if (!(state instanceof SavedState)) {
-      return;
-    }
     SavedState savedState = (SavedState) state;
     detached = savedState.detached;
   }
