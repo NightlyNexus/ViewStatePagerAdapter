@@ -1,6 +1,12 @@
 Change Log
 ==========
 
+Version 1.0.2 *(2016-06-11)*
+----------------------------
+
+ * Fix: Revert last fix. The wrong Parcelable being restored is always a consumer error, as far as has been observed.
+
+
 Version 1.0.1 *(2016-06-05)*
 ----------------------------
 
