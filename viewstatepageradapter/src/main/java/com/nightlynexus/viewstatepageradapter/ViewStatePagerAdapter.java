@@ -108,13 +108,13 @@ public abstract class ViewStatePagerAdapter extends PagerAdapter {
     }
 
     @Override public void writeToParcel(Parcel dest, int flags) {
-      writeSparseArray(dest, detached);
+      writeNestedSparseArray(dest, detached, flags);
     }
 
     public static final Creator<SavedState> CREATOR = new Creator<SavedState>() {
       @Override public SavedState createFromParcel(Parcel in) {
         SparseArray<SparseArray<Parcelable>> detached =
-            readSparseArray(in, SavedState.class.getClassLoader());
+            readNestedSparseArray(in, SavedState.class.getClassLoader());
         return new SavedState(detached);
       }
 
@@ -127,32 +127,64 @@ public abstract class ViewStatePagerAdapter extends PagerAdapter {
       return 0;
     }
 
-    static <T> SparseArray<T> readSparseArray(Parcel in, ClassLoader loader) {
+    static SparseArray<SparseArray<Parcelable>> readNestedSparseArray(Parcel in,
+        ClassLoader loader) {
       int size = in.readInt();
       if (size == -1) {
         return null;
       }
-      SparseArray<T> sa = new SparseArray<>(size);
-      while (size > 0) {
+      SparseArray<SparseArray<Parcelable>> map = new SparseArray<>(size);
+      while (size != 0) {
         int key = in.readInt();
-        @SuppressWarnings("unchecked") T value = (T) in.readValue(loader);
-        sa.append(key, value);
+        SparseArray<Parcelable> value = readSparseArray(in, loader);
+        map.append(key, value);
         size--;
       }
-      return sa;
+      return map;
     }
 
-    static <T> void writeSparseArray(Parcel dest, SparseArray<T> val) {
-      if (val == null) {
+    static SparseArray<Parcelable> readSparseArray(Parcel in, ClassLoader loader) {
+      int size = in.readInt();
+      if (size == -1) {
+        return null;
+      }
+      SparseArray<Parcelable> map = new SparseArray<>(size);
+      while (size != 0) {
+        int key = in.readInt();
+        Parcelable value = in.readParcelable(loader);
+        map.append(key, value);
+        size--;
+      }
+      return map;
+    }
+
+    static void writeNestedSparseArray(Parcel dest, SparseArray<SparseArray<Parcelable>> map,
+        int flags) {
+      if (map == null) {
         dest.writeInt(-1);
         return;
       }
-      int size = val.size();
+      int size = map.size();
       dest.writeInt(size);
       int i = 0;
-      while (i < size) {
-        dest.writeInt(val.keyAt(i));
-        dest.writeValue(val.valueAt(i));
+      while (i != size) {
+        dest.writeInt(map.keyAt(i));
+        writeSparseArray(dest, map.valueAt(i), flags);
+        i++;
+      }
+    }
+
+    static void writeSparseArray(Parcel dest, SparseArray<Parcelable> map, int flags) {
+      if (map == null) {
+        dest.writeInt(-1);
+        return;
+      }
+      int size = map.size();
+      dest.writeInt(size);
+      int i = 0;
+      while (i != size) {
+        dest.writeInt(map.keyAt(i));
+        dest.writeParcelable(map.valueAt(i), flags);
         i++;
       }
     }
