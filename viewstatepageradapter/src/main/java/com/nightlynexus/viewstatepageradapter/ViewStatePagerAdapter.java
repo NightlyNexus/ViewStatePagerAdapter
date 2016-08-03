@@ -42,7 +42,7 @@ public abstract class ViewStatePagerAdapter extends PagerAdapter {
   protected void destroyView(ViewGroup container, int position, View view) {
   }
 
-  @Override public final Parcelable saveState() {
+  @Override public final SavedState saveState() {
     for (int i = 0; i < attached.size(); i++) {
       int position = attached.keyAt(i);
       View view = attached.valueAt(i);
@@ -100,7 +100,7 @@ public abstract class ViewStatePagerAdapter extends PagerAdapter {
     return view == object;
   }
 
-  private static final class SavedState implements Parcelable {
+  public static final class SavedState implements Parcelable {
     final SparseArray<SparseArray<Parcelable>> detached;
 
     SavedState(SparseArray<SparseArray<Parcelable>> detached) {
