@@ -1,6 +1,12 @@
 Change Log
 ==========
 
+Version 1.0.3 *(2016-08-04)*
+----------------------------
+
+ * New: Expose the SavedState final type via `saveState()`.
+
+
 Version 1.0.2 *(2016-06-11)*
 ----------------------------
 
