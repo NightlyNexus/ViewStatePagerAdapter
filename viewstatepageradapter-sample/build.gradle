@@ -11,6 +11,15 @@ android {
     versionCode 1
     versionName "1.0"
   }
+
+  lintOptions {
+    abortOnError true
+    warningsAsErrors true
+    textReport true
+    textOutput 'stdout'
+    htmlReport true
+    htmlOutput rootProject.file("lint-reports/${name}.html")
+  }
 }
 
 dependencies {

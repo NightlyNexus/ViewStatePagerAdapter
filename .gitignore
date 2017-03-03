@@ -8,5 +8,7 @@ gradlew.bat
 build
 local.properties
 
+lint-reports
+
 # Mac OS
 .DS_Store

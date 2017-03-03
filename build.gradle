@@ -1,9 +1,19 @@
 buildscript {
   dependencies {
     classpath 'com.android.tools.build:gradle:2.2.3'
+    classpath 'net.ltgt.gradle:gradle-errorprone-plugin:0.0.8'
   }
 
   repositories {
     jcenter()
+    maven { url 'https://plugins.gradle.org/m2/' }
+  }
+}
+
+allprojects {
+  tasks.withType(JavaCompile) {
+    options.compilerArgs += ['-Xlint:all',
+                             '-Xlint:-deprecation',
+                             '-Werror']
   }
 }
