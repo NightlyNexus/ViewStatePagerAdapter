@@ -22,6 +22,10 @@ android {
   }
 }
 
+repositories {
+  mavenCentral()
+}
+
 dependencies {
   compile project(':viewstatepageradapter')
 }

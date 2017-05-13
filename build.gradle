@@ -1,11 +1,11 @@
 buildscript {
   dependencies {
-    classpath 'com.android.tools.build:gradle:2.2.3'
-    classpath 'net.ltgt.gradle:gradle-errorprone-plugin:0.0.8'
+    classpath 'com.android.tools.build:gradle:2.3.2'
+    classpath 'net.ltgt.gradle:gradle-errorprone-plugin:0.0.10'
   }
 
   repositories {
-    jcenter()
+    mavenCentral()
     maven { url 'https://plugins.gradle.org/m2/' }
   }
 }
@@ -15,5 +15,21 @@ allprojects {
     options.compilerArgs += ['-Xlint:all',
                              '-Xlint:-deprecation',
                              '-Werror']
+  }
+
+  apply plugin: 'net.ltgt.errorprone'
+  apply plugin: 'checkstyle'
+
+  task checkstyle(type: Checkstyle) {
+    configFile rootProject.file('checkstyle.xml')
+    source 'src'
+    include '**/*.java'
+    exclude '**/gen/**'
+
+    classpath = files()
+  }
+
+  checkstyle {
+    toolVersion = '7.7'
   }
 }

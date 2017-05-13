@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'net.ltgt.errorprone'
 apply from: rootProject.file('gradle/gradle-mvn-push.gradle')
 
 android {
@@ -25,5 +24,5 @@ repositories {
 }
 
 dependencies {
-  compile 'com.android.support:support-core-ui:25.2.0'
+  compile 'com.android.support:support-core-ui:25.3.1'
 }
