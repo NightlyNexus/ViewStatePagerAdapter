@@ -120,7 +120,6 @@
     <!-- See http://checkstyle.sf.net/config_coding.html -->
     <module name="CovariantEquals"/>
     <module name="EmptyStatement"/>
-    <module name="EqualsAvoidNull"/>
     <module name="EqualsHashCode"/>
     <module name="IllegalInstantiation"/>
     <module name="InnerAssignment"/>
