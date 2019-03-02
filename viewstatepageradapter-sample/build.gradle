@@ -1,20 +1,19 @@
 apply plugin: 'com.android.application'
 
 android {
-  compileSdkVersion 25
-  buildToolsVersion "25.0.2"
+  compileSdkVersion 28
 
   defaultConfig {
     applicationId "com.nightlynexus.viewstatepageradaptersample"
     minSdkVersion 15
-    targetSdkVersion 25
+    targetSdkVersion 28
     versionCode 1
     versionName "1.0"
   }
 
   lintOptions {
     abortOnError true
-    warningsAsErrors true
+    // warningsAsErrors true
     textReport true
     textOutput 'stdout'
     htmlReport true
@@ -22,10 +21,6 @@ android {
   }
 }
 
-repositories {
-  mavenCentral()
-}
-
 dependencies {
-  compile project(':viewstatepageradapter')
+  implementation project(':viewstatepageradapter')
 }

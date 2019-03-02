@@ -1,8 +1,8 @@
 package com.nightlynexus.viewstatepageradaptersample;
 
-import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.viewpager.widget.PagerAdapter;
 
 abstract class ViewPagerAdapter extends PagerAdapter {
   protected abstract View createView(ViewGroup container, int position);

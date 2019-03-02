@@ -2,8 +2,7 @@ apply plugin: 'com.android.library'
 apply from: rootProject.file('gradle/gradle-mvn-push.gradle')
 
 android {
-  compileSdkVersion 25
-  buildToolsVersion "25.0.2"
+  compileSdkVersion 28
 
   defaultConfig {
     minSdkVersion 15
@@ -17,12 +16,13 @@ android {
     htmlReport true
     htmlOutput rootProject.file("lint-reports/${name}.html")
   }
-}
 
-repositories {
-  mavenCentral()
+  // TODO: Replace with https://issuetracker.google.com/issues/72050365 once released.
+  libraryVariants.all {
+    it.generateBuildConfig.enabled = false
+  }
 }
 
 dependencies {
-  compile 'com.android.support:support-core-ui:25.3.1'
+  api 'androidx.viewpager:viewpager:1.0.0'
 }

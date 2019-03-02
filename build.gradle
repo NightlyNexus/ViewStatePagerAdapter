@@ -1,10 +1,11 @@
 buildscript {
   dependencies {
-    classpath 'com.android.tools.build:gradle:2.3.2'
-    classpath 'net.ltgt.gradle:gradle-errorprone-plugin:0.0.10'
+    classpath 'com.android.tools.build:gradle:3.3.1'
+    classpath 'net.ltgt.gradle:gradle-errorprone-plugin:0.0.16'
   }
 
   repositories {
+    google()
     mavenCentral()
     maven { url 'https://plugins.gradle.org/m2/' }
   }
@@ -19,6 +20,15 @@ allprojects {
 
   apply plugin: 'net.ltgt.errorprone'
   apply plugin: 'checkstyle'
+
+  repositories {
+    google()
+    jcenter() // Needed for Lint.
+  }
+
+  dependencies {
+    errorprone 'com.google.errorprone:error_prone_core:2.3.3'
+  }
 
   task checkstyle(type: Checkstyle) {
     configFile rootProject.file('checkstyle.xml')

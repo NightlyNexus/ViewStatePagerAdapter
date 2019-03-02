@@ -17,10 +17,10 @@ package com.nightlynexus.viewstatepageradapter;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.v4.view.PagerAdapter;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.viewpager.widget.PagerAdapter;
 
 public abstract class ViewStatePagerAdapter extends PagerAdapter {
   private final SparseArray<View> attached;
@@ -43,7 +43,7 @@ public abstract class ViewStatePagerAdapter extends PagerAdapter {
   }
 
   @Override public final SavedState saveState() {
-    for (int i = 0; i < attached.size(); i++) {
+    for (int i = 0, size = attached.size(); i < size; i++) {
       int position = attached.keyAt(i);
       View view = attached.valueAt(i);
       putInDetached(position, view);
